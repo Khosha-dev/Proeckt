@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
+from tkinter.scrolledtext import ScrolledText
+
 
 window = Tk()
 window.title("Rent Avto")
@@ -75,11 +77,63 @@ def start():
             admin_frame=Frame(window,width=1020, height=768,bg="#999999")
             admin_frame.place(x=0,y=0)
 
+            # Entry
+            # 1
+
+            name_car=Entry(admin_frame,width=30,bg="#800000",fg="white",font=("Comic Sans MS", 14))
+            name_car.place(x=96,y=50)
+
+            # 2
+
+            # car_description=Entry(admin_frame,width=40,font=("Comic Sans MS", 10),bg="#800000",fg="#ff0000")
+            # car_description.place(x=96,y=120)
+
+
+
+
+            scroll_description = ScrolledText(admin_frame)
+            scroll_description.insert("1.0", "")
+            scroll_description.place(x=60, y=120)
+            scroll_description.config(bg="#999999", width=100, height=35, font=(14), fg="red",
+                                       wrap=WORD)
+
+
+            def save_admin_eco_avto():
+                Care_name = name_car.get()
+                description = scroll_description.get("1.0", "end")
+
+                with open("car.txt", "a") as file:
+                    file.write(f"{Care_name}:{description}\n")
+
+
+
+
+
+
+
+
+            # Label
+            # 1
+
+            name_label=Label(admin_frame,text="Car name:",font=("Comic Sans MS", 14),bg="#999999",fg="#ff0000")
+            name_label.place(x=95,y=10)
+
+            # 2
+
+            description_label=Label(admin_frame,font=("Comic Sans MS", 18),bg="#999999",
+                                    fg="#ff0000",text="Car description:")
+            description_label.place(x=90,y=80)
+
+
+
+
+
             def back_eco():
+                save_admin_eco_avto()
                 Avto_econom()
 
             back_econom=Button(admin_frame,text="back",width=5,height=2,command=back_eco,bg="#999999")
-            back_econom.place(x=10,y=600)
+            back_econom.place(x=5,y=600)
 
         # def admin
 
@@ -307,9 +361,41 @@ def start():
             econom=Frame(window,width=1020,height=768,bg="#999999")
             econom.place(x=0,y=0)
 
+            # scrol bar for car
+
+            def load_car_data():
+                with open("car.txt","r") as file:
+                    content = file.readlines()
+                    scroll_info = ""
+                    for line in content:
+                        line = line.strip()
+                        if ':' in line:
+                            parts = line.split(':', 1)
+                            if len(parts) == 2:
+                                car_name = parts[0].strip()
+                                car_description = parts[1].strip()
+                                scroll_info += f"Car name: {car_name}\nCar description: {car_description}\n\n"
+
+                scroll.config(state=NORMAL)
+                scroll.insert("1.0", scroll_info)
+                scroll.config(state=DISABLED)
+
+
+            scroll = ScrolledText(econom)
+            scroll.insert("1.0","")
+            scroll.place(x=70,y=50)
+            scroll.config(bg="#999999",width=100,height=38,font=(14),fg="red",state=DISABLED,wrap=WORD)
+            load_car_data()
 
 
 
+            # Label
+            label_car_info=Label(econom,text="Списик Машин доступен на аренду. Для аренды позвоните "
+                                             "по телефону c 2 страницы"
+                                             ,bg="#999999",fg="#800000",font=("Comic Sans MS", 14))
+            label_car_info.place(x=100,y=10)
+
+            # Button
             admin=Button(econom,text="admin",width=5,height=2,command=admin_password,bg="#999999",fg="#ff0000")
             admin.place(x=10,y=10)
 
@@ -318,7 +404,7 @@ def start():
 
             back_start_frame= Button(econom, text="back", width=5, height=2, command=start_frame_back,
                                      bg="#999999", fg="#ff0000")
-            back_start_frame.place(x=10, y=650)
+            back_start_frame.place(x=10, y=700)
 
 
 
@@ -488,7 +574,7 @@ def start():
     pas_label.config(background="#999999",
                      fg="#ff0000",
                      font=("Comic Sans MS", 14, "italic"))
-    pas_label.place(x=100, y=160)
+    pas_label.place(x=100, y=165)
 
     log = Button(window, text="login", command=Log_in)
     log.config(bg="#999999", fg="#ff0000", height=2, width=5)
