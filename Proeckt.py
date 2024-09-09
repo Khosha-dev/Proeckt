@@ -49,7 +49,7 @@ def start():
         start_frame.place(x=0, y=0)
         # image
         # 1
-        rent_car_image=PhotoImage(file="c:/project/pythonProject/IT.HOME_WORK/image/avto_rent7.png")
+        rent_car_image=PhotoImage(r"image/avto_rent7.png")
         image_rent_label=Label(image=rent_car_image)
         image_rent_label.image = rent_car_image
         image_rent_label.place(x=150,y=200)
@@ -204,7 +204,7 @@ def start():
 
 
             # peremenn
-            instagram = inst_entry.get
+            # instagram = inst_entry.get
             instagram = "fedr331"
 
 
@@ -382,7 +382,7 @@ def start():
 
     # image
     # 1
-    rent_car_image2 = PhotoImage(file="c:/project/pythonProject/IT.HOME_WORK/image/avto_rent16.png")
+    rent_car_image2 = PhotoImage(r"image/avto_rent16.png")
     image_rent_label2 = Label(sign_in_frame,image=rent_car_image2)
     image_rent_label2.image = rent_car_image2
     image_rent_label2.place(x=80, y=200)
@@ -441,22 +441,6 @@ def start():
 #
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 start()
 
 window.mainloop()
-
-
-
