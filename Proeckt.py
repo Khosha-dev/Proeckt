@@ -14,8 +14,8 @@ window.resizable(width=False,height=False)
 #     with open(user_file, "a") as file:
 #         file.write(f"{username}:{password}\n")
 # control
-#
-# window.iconbitmap("icon_image/cal.ico")
+
+# window.iconbitmap("favico.ico")
 #
 # window.config(bg="#999999")
 
@@ -287,17 +287,17 @@ def start():
 
             # label
             # 1
-            label_instagram=Label(info_frame,text=f"instagram:\n{instagram}")
+            label_instagram=Label(info_frame,text=f"Instagram:\n{instagram}")
             label_instagram.config(bg="#999999",fg="#800000",font=("Comic Sans MS", 28),width=20)
             label_instagram.place(x=250,y=100)
             # 2 text label
-            label_telegram = Label(info_frame, text=f"telegram:\n{telegram}")
+            label_telegram = Label(info_frame, text=f"Telegram:\n{telegram}")
             label_telegram.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28),width=20)
-            label_telegram.place(x=250, y=200)
+            label_telegram.place(x=250, y=230)
             # 3
-            label_telefon = Label(info_frame, text=f"telefon:\n{telefon}")
+            label_telefon = Label(info_frame, text=f"Telefon:\n{telefon}")
             label_telefon.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28),width=20)
-            label_telefon.place(x=250, y=300)
+            label_telefon.place(x=250, y=360)
 
 
 
@@ -331,8 +331,9 @@ def start():
         Avto_button = Button(start_frame, text="Econom avto", command=Avto_econom)
         Avto_button.config(bg="#999999",
                            fg="#ff0000",
-                           width=10,
-                           height=2)
+                           width=11,
+                           height=2,
+                           font="14")
         Avto_button.place(x=20, y=50)
 
         sing_button = Button(start_frame, text="next", command=next)  # command=Sing_in)
