@@ -49,7 +49,7 @@ def start():
         start_frame.place(x=0, y=0)
         # image
         # 1
-        rent_car_image=PhotoImage(file="c:/project/pythonProject/IT.HOME_WORK/image/avto_rent7.png")
+        rent_car_image=PhotoImage(file=r"image/avto_rent7.png")
         image_rent_label=Label(image=rent_car_image)
         image_rent_label.image = rent_car_image
         image_rent_label.place(x=150,y=200)
@@ -142,11 +142,41 @@ def start():
                 info_redact = Frame(window, width=1020, height=768, bg="#999999")
                 info_redact.place(x=0, y=0)
 
+                # def
+                def back_info():
+                    next()
+
+                # label
+                # 1
+                label_insta=Label(info_redact,text="instagram:",font=("Comic Sans MS", 14),bg="#999999")
+                label_insta.place(x=10,y=6)
+
+                # 2
+                label_instaga = Label(info_redact, text="Telegram:", font=("Comic Sans MS", 14), bg="#999999")
+                label_instaga.place(x=10, y=58)
+
+                # 3
+
+
+
 
 
                 # Entry
-                inst_entry=Entry(info_redact,bg="#800000", width=25, font=("Comic Sans MS", 14))
-                inst_entry.place(x=10,y=10)
+                # 1
+
+                instagram_entry=Entry(info_redact,bg="#800000", width=25, font=("Comic Sans MS", 14))
+                instagram_entry.place(x=110,y=10)
+
+                # 2
+
+                telegram_entry = Entry(info_redact, bg="#800000", width=25, font=("Comic Sans MS", 14))
+                telegram_entry.place(x=110, y=60)
+
+                # Button
+
+                back3=Button(info_redact,bg="#999999",text="Back",width=5,height=2,command=back_info)
+                back3.place(x=10,y=720)
+
 
 
             def info_admin_pass():
@@ -205,7 +235,8 @@ def start():
 
             # peremenn
             instagram = inst_entry.get
-            instagram = "fedr331"
+            telegram = teleg_entry.get
+            telefon = telefon_entry.get
 
 
             # label
@@ -214,7 +245,13 @@ def start():
             label_instagram.config(bg="#999999",fg="#800000",font=("Comic Sans MS", 28))
             label_instagram.place(x=300,y=100)
             # 2 text label
-
+            label_telegram = Label(info_frame, text=f"telegram:{telegram}")
+            label_telegram.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28))
+            label_telegram.place(x=300, y=100)
+            # 3
+            label_telefon = Label(info_frame, text=f"telefon:{telefon}")
+            label_telefon.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28))
+            label_telefon.place(x=300, y=100)
 
 
 
@@ -382,7 +419,7 @@ def start():
 
     # image
     # 1
-    rent_car_image2 = PhotoImage(file="c:/project/pythonProject/IT.HOME_WORK/image/avto_rent16.png")
+    rent_car_image2 = PhotoImage(file=r"image/avto_rent16.png")
     image_rent_label2 = Label(sign_in_frame,image=rent_car_image2)
     image_rent_label2.image = rent_car_image2
     image_rent_label2.place(x=80, y=200)
