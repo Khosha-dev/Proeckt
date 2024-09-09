@@ -157,7 +157,8 @@ def start():
 
                 # 3
 
-
+                telefon_label=Label(info_redact, text="Telefon:", font=("Comic Sans MS", 14), bg="#999999")
+                telefon_label.place(x=25,y=105)
 
 
 
@@ -172,10 +173,40 @@ def start():
                 telegram_entry = Entry(info_redact, bg="#800000", width=25, font=("Comic Sans MS", 14))
                 telegram_entry.place(x=110, y=60)
 
-                # Button
+                # 3
 
+                telefon_entry = Entry(info_redact, bg="#800000", width=25, font=("Comic Sans MS", 14))
+                telefon_entry.place(x=110,y=110)
+
+                # save
+                def save_info():
+                    instagram = instagram_entry.get
+                    telegram = telegram_entry.get
+                    telefon = telefon_entry.get
+                    # info=({"insta":instagram,"telega":telegram,"telefon":telefon})
+                    info=[instagram,telegram,telefon]
+                    with open("info.txt","a") as file:
+                        file.write(f"{instagram}\n")
+                        file.write(f"{telegram}\n")
+                        file.write(f"{telefon}\n")
+
+
+
+
+
+
+
+
+
+
+                # Button
+                # 1
                 back3=Button(info_redact,bg="#999999",text="Back",width=5,height=2,command=back_info)
                 back3.place(x=10,y=720)
+
+                # 2
+                info_save=Button(info_redact,bg="#999999",text="save",width=5,height=2,command=save_info)
+                info_save.place(x=60,y=720)
 
 
 
@@ -234,8 +265,8 @@ def start():
 
 
             # peremenn
-            instagram = inst_entry.get
-            telegram = teleg_entry.get
+            instagram = instagram_entry.get
+            telegram = telegram_entry.get
             telefon = telefon_entry.get
 
 
