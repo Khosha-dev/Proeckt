@@ -184,11 +184,14 @@ def start():
                     telegram = telegram_entry.get()
                     telefon = telefon_entry.get()
                     # info=({"insta":instagram,"telega":telegram,"telefon":telefon})
-                    info=[instagram,telegram,telefon]
-                    with open("info.txt","a") as file:
-                        file.write(f"{1}:{instagram}\n")
-                        file.write(f"{2}:{telegram}\n")
-                        file.write(f"{3}:{telefon}\n")
+                    info_list=[instagram,telegram,telefon]
+                    with open("info.txt","w") as file:
+                        for info in info_list:
+                            file.write(f"{info}\n")
+                        # file.write(f"{instagram}\n")
+                        # file.write(f"{telegram}\n")
+                        # file.write(f"{telefon}\n")
+
 
 
 
@@ -267,32 +270,34 @@ def start():
             # peremenn
 
             with open("info.txt","r") as file:
-                file.readlines()
+                lines = file.readlines()
 
-            instagram=""
-            telegram=""
-            telefon=""
-            for line in "info.txt":
-                if line == "1":
-                    instagram = file
-                elif line == "2":
-                    telegram = file
-                elif line == "3":
-                    telefon = file
+
+
+            if len(lines) >= 3:
+                instagram = lines[0]
+                telegram = lines[1]
+                telefon = lines[2]
+            else:
+                instagram=""
+                telegram=""
+                telefon=""
+
+
 
             # label
             # 1
-            label_instagram=Label(info_frame,text=f"instagram:{instagram}")
+            label_instagram=Label(info_frame,text=f"instagram:\n{instagram}")
             label_instagram.config(bg="#999999",fg="#800000",font=("Comic Sans MS", 28),width=20)
-            label_instagram.place(x=300,y=100)
+            label_instagram.place(x=250,y=100)
             # 2 text label
-            label_telegram = Label(info_frame, text=f"telegram:{telegram}")
+            label_telegram = Label(info_frame, text=f"telegram:\n{telegram}")
             label_telegram.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28),width=20)
-            label_telegram.place(x=300, y=200)
+            label_telegram.place(x=250, y=200)
             # 3
-            label_telefon = Label(info_frame, text=f"telefon:{telefon}")
+            label_telefon = Label(info_frame, text=f"telefon:\n{telefon}")
             label_telefon.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28),width=20)
-            label_telefon.place(x=300, y=300)
+            label_telefon.place(x=250, y=300)
 
 
 
