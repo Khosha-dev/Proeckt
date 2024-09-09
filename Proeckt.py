@@ -81,16 +81,16 @@ def start():
             # 1
 
             name_car=Entry(admin_frame,width=30,bg="#800000",fg="white",font=("Comic Sans MS", 14))
-            name_car.place(x=96,y=50)
+            name_car.place(x=56,y=50)
 
             # 2
 
-            # car_description=Entry(admin_frame,width=40,font=("Comic Sans MS", 10),bg="#800000",fg="#ff0000")
-            # car_description.place(x=96,y=120)
+            Price_car=Entry(admin_frame,width=40,font=("Comic Sans MS", 14),bg="#800000",fg="#ff0000")
+            Price_car.place(x=496,y=50)
 
 
 
-
+            # 3
             scroll_description = ScrolledText(admin_frame)
             scroll_description.insert("1.0", "")
             scroll_description.place(x=60, y=120)
@@ -100,10 +100,12 @@ def start():
 
             def save_admin_eco_avto():
                 Care_name = name_car.get()
+                Price = Price_car.get()
                 description = scroll_description.get("1.0", "end")
 
+
                 with open("car.txt", "a") as file:
-                    file.write(f"{Care_name}:{description}\n")
+                    file.write(f"{Care_name}:{Price}:{description}")
 
 
 
@@ -116,7 +118,7 @@ def start():
             # 1
 
             name_label=Label(admin_frame,text="Car name:",font=("Comic Sans MS", 14),bg="#999999",fg="#ff0000")
-            name_label.place(x=95,y=10)
+            name_label.place(x=65,y=14)
 
             # 2
 
@@ -124,6 +126,9 @@ def start():
                                     fg="#ff0000",text="Car description:")
             description_label.place(x=90,y=80)
 
+            # 3
+            Price_label = Label(admin_frame, text="Price:", font=("Comic Sans MS", 18), bg="#999999", fg="#ff0000")
+            Price_label.place(x=500, y=10)
 
 
 
@@ -370,11 +375,13 @@ def start():
                     for line in content:
                         line = line.strip()
                         if ':' in line:
-                            parts = line.split(':', 1)
-                            if len(parts) == 2:
+                            parts = line.split(':', 2)
+                            if len(parts) == 3:
                                 car_name = parts[0].strip()
-                                car_description = parts[1].strip()
-                                scroll_info += f"Car name: {car_name}\nCar description: {car_description}\n\n"
+                                car_price = parts[1].strip()
+                                car_description = parts[2].strip()
+                                scroll_info += (f"Car name: {car_name}"f"\nCar price: {car_price}"
+                                              f"\nCar description: {car_description} \n\n")
 
                 scroll.config(state=NORMAL)
                 scroll.insert("1.0", scroll_info)
@@ -384,7 +391,7 @@ def start():
             scroll = ScrolledText(econom)
             scroll.insert("1.0","")
             scroll.place(x=70,y=50)
-            scroll.config(bg="#999999",width=100,height=38,font=(14),fg="red",state=DISABLED,wrap=WORD)
+            scroll.config(bg="#999999",width=100,height=38,font=(14),fg="#800000",state=DISABLED,wrap=WORD)
             load_car_data()
 
 
