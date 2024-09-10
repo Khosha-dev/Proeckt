@@ -524,7 +524,7 @@ def start():
             elif login != None and password != None and mail_entry != None and rep_password != None:
                 if password == rep_password:
                     with open("account.txt", "a") as file:
-                        file.write(f"{login}:{password}\n")
+                        file.write(f"{login}:{password}:{mail}\n")
                     messagebox.showinfo(message="reqistraciya uspeshna")
                     start()
 
