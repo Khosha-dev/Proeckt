@@ -408,8 +408,12 @@ def start():
                 scroll.config(state=NORMAL)
                 scroll.delete("1.0", END)
                 for car in list_car:
-                    scroll.insert((END,f"Car name:{car["name"]}\nCar price:{car["price"))
-                    scroll.config(state=DISABLED)
+                    scroll.insert(END,f"Car name:{car["name"]}\nCar price:{car["price"]}"
+                                       f"\nCar description:{car["description]}")
+                scroll.config(state=DISABLED)
+
+            def sort_name():
+                sort_cars = sort
 
 
             scroll = ScrolledText(econom)
