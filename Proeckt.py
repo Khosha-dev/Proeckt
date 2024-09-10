@@ -160,13 +160,18 @@ def start():
             back_econom=Button(admin_frame,text="back",width=5,height=2,command=back_eco,bg="#999999",fg="#ff0000")
             back_econom.place(x=5,y=710)
 
-            # def delete_car():
-            #     with open("car.txt","r+") as file:
-            #         car = file.readlines()
-            #         delet = delet_entry.get()
-            #     with open("car.txt", "w") as file:
-            #         for line in file:
-            #             if line == delet:
+            def delete_car():
+                car_name_to_delete = delet_entry.get().strip()
+                with open("car.txt", "r") as file:
+                    cars = file.readlines()
+
+                with open("car.txt", "w") as file:
+                    for car in cars:
+                        car_details = car.split(":")
+                        if car_details[0].strip() != car_name_to_delete:
+                            file.write(car)
+
+                messagebox.showinfo("Успех", f"Машина '{car_name_to_delete}' успешно удалена")
 
 
 
