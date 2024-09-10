@@ -582,7 +582,23 @@ def start():
                           )
         second_pas.place(x=100,y=300)
 
+        show_var = IntVar()
 
+        def show():
+            if show_var.get():
+                pas1_entry.config(show = "")
+                second_pas.config(show = "")
+            else:
+                pas1_entry.config(show = "*")
+                second_pas.config(show = "*")
+
+
+
+        check_button = Checkbutton(s_up,text="Show password",command=show,bg="#999999",
+                          fg="#ff0000",
+                          font=("Comic Sans MS", 14),
+                          width=12,variable=show_var)
+        check_button.place(x=450,y=200)
 
         pas1_entry = Entry(s_up)
         pas1_entry.config(bg="#800000",
@@ -653,11 +669,20 @@ def start():
                        font=("Comic Sans MS", 14, "italic"))
     login_label.place(x=100, y=95)
 
+
+
+
+
+
     pas_label = Label(window, text="Pasword")
     pas_label.config(background="#999999",
                      fg="#ff0000",
                      font=("Comic Sans MS", 14, "italic"))
     pas_label.place(x=100, y=165)
+
+
+
+
 
     log = Button(window, text="login", command=Log_in)
     log.config(bg="#999999", fg="#ff0000", height=2, width=5)
