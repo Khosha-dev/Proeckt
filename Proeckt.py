@@ -273,13 +273,6 @@ def start():
 
 
 
-
-
-
-
-
-
-
                 # Button
                 # 1
                 back3=Button(info_redact,bg="#999999",text="Back",width=5,height=2,command=back_info)
@@ -336,13 +329,6 @@ def start():
             info_admin=Button(info_frame,text="redact",bg="#999999",fg="#800000",width=6,height=2,
                               command=info_admin_pass)
             info_admin.place(x=800,y=10)
-
-
-
-
-
-
-
 
 
             # peremenn
@@ -707,18 +693,6 @@ def start():
 #     image for program
 #
 #
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 start()
