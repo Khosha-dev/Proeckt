@@ -684,9 +684,9 @@ def start():
 
 
 
-    log = Button(window, text="login", command=Log_in)
-    log.config(bg="#999999", fg="#ff0000", height=2, width=5)
-    log.place(x=150, y=250)
+    log_button = Button(window, text="login", command=Log_in)
+    log_button.config(bg="#999999", fg="#ff0000", height=2, width=5)
+    log_button.place(x=150, y=250)
 
     def destroy():
         window.destroy()
