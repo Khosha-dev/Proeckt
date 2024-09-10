@@ -506,22 +506,14 @@ def start():
 
             login = log1_entry.get()
             password = pas1_entry.get()
-            rep_password=second_pas.get()
-            mail = mail_entry.get()
-            if login == " " or password == " " or login == "" or password == "" or mail == " " or mail == ""\
-                    or rep_password == "" or rep_password == " ":
-                messagebox.showinfo(message="zapolnite vse polya")
+            if login == " " or password == " " or login == "" or password == "":
+                messagebox.showinfo(message="zapolnite polya")
                 sing()
-            elif password != rep_password:
-                messagebox.showinfo(message="parol ne sovpadaet")
-                sing()
-
-            elif login != None and password != None and mail_entry != None and rep_password != None:
-                if password == rep_password:
-                    with open("account.txt", "a") as file:
-                        file.write(f"{login}:{password}\n")
-                    messagebox.showinfo(message="reqistraciya uspeshna")
-                    start()
+            elif login != None and password != None:
+                with open("account.txt", "a") as file:
+                    file.write(f"{login}:{password}\n")
+                messagebox.showinfo(message="reqistraciya uspeshna")
+                start()
 
 
 
@@ -537,20 +529,20 @@ def start():
                             fg="#ff0000",
                             width=5,
                             height=2)
-        sing1_button.place(x=260, y=340)
+        sing1_button.place(x=260, y=250)
 
         sing1_button = Button(s_up, text="registr", command=Sing_up)
         sing1_button.config(bg="#999999",
                             fg="#ff0000",
                             width=5,
                             height=2)
-        sing1_button.place(x=360, y=340)
+        sing1_button.place(x=360, y=250)
 
-        log_label = Label(s_up, text="Avto")
-        log_label.config(background="#999999",
+        login1_label = Label(s_up, text="Avto")
+        login1_label.config(background="#999999",
                             fg="white",
                             font=("Comic Sans MS", 28, "italic"))
-        log_label.place(x=100, y=10)
+        login1_label.place(x=100, y=10)
 
         login1_label = Label(s_up, text="Login")
         login1_label.config(background="#999999",
@@ -563,27 +555,6 @@ def start():
                           fg="#ff0000",
                           font=("Comic Sans MS", 14, "italic"))
         pas1_label.place(x=100, y=172)
-
-        mail_label = Label(s_up, text="Mail")
-        mail_label.config(background="#999999",
-                          fg="#ff0000",
-                          font=("Comic Sans MS", 14, "italic"))
-        mail_label.place(x=100, y=222)
-
-        repear_password = Label(s_up, text="Repear passwot")
-        repear_password.config(bg="#999999",fg="#ff0000",font=("Comic Sans MS", 14, "italic"))
-        repear_password.place(x=100,y=270)
-
-        second_pas=Entry(s_up)
-        second_pas.config(bg="#800000",
-                          fg="#ff0000",
-                          font=("Comic Sans MS", 14),
-                          width=25,
-                          show="*"
-                          )
-        second_pas.place(x=100,y=300)
-
-
 
         pas1_entry = Entry(s_up)
         pas1_entry.config(bg="#800000",
@@ -601,14 +572,6 @@ def start():
                           width=25
                           )
         log1_entry.place(x=100, y=150)
-
-        mail_entry=Entry(s_up)
-        mail_entry.config(bg="#800000",
-                          fg="#ff0000",
-                          font=("Comic Sans MS", 14),
-                          width=25
-                          )
-        mail_entry.place(x=100,y=250)
 
 
 
