@@ -154,8 +154,14 @@ def start():
 
 
             def back_eco():
-                save_admin_eco_avto()
+
                 Avto_econom()
+
+
+            save_car=Button(admin_frame,text="save",width=5,height=2,
+                            command=save_admin_eco_avto,bg="#999999",fg="#ff0000")
+            save_car.place(x=5,y=660)
+
 
             back_econom=Button(admin_frame,text="back",width=5,height=2,command=back_eco,bg="#999999",fg="#ff0000")
             back_econom.place(x=5,y=710)
