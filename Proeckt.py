@@ -567,7 +567,7 @@ def start():
                           font=("Comic Sans MS", 14, "italic"))
         mail_label.place(x=100, y=222)
 
-        repear_password = Label(s_up, text="Repear passwot")
+        repear_password = Label(s_up, text="Repear password")
         repear_password.config(bg="#999999",fg="#ff0000",font=("Comic Sans MS", 14, "italic"))
         repear_password.place(x=100,y=270)
 
