@@ -9,39 +9,9 @@ window.geometry("1028x768+790+250")
 window.resizable(width=False,height=False)
 
 
-# window.config(bg="#999999")
-
-
-# def user_file(username, password):
-#     with open(user_file, "a") as file:
-#         file.write(f"{username}:{password}\n")
-# control
-
-# window.iconbitmap("favico.ico")
-#
-# window.config(bg="#999999")
-
-# control
-
-    # sing_button = Button(start_frame, text="next", command=next)  # command=Sing_in)
-    # sing_button.config(bg="#999999",
-    #                    fg="#ff0000",
-    #                    width=5,
-    #                    height=2)
-    # sing_button.place(x=60, y=600)
-
-
-# class sing_up:
-#     def __init__(self,login,password):
-#         self.login=login
-#         self.password=password
-
-
-# else:
-#     messagebox.showerror(title="error", message="error")
 
 Admin_Pasword="Admin"
-
+sort_mode = "name"
 
 
 def start():
@@ -417,10 +387,12 @@ def start():
 
             # scrol bar for car
 
+            list_car=[]
+
             def load_car_data():
                 with open("car.txt","r") as file:
                     content = file.readlines()
-                    scroll_info = ""
+
                     for line in content:
                         line = line.strip()
                         if ':' in line:
@@ -429,12 +401,15 @@ def start():
                                 car_name = parts[0].strip()
                                 car_price = parts[1].strip()
                                 car_description = parts[2].strip()
-                                scroll_info += (f"Car name: {car_name}"f"\nCar price: {car_price}"
-                                              f"\nCar description: {car_description} \n\n")
-
+                                list_car.append ({"Car name": car_name, "Car price": float(car_price),
+                                                  "Car description": car_description})
+                car_scrol()
+            def car_scrol():
                 scroll.config(state=NORMAL)
-                scroll.insert("1.0", scroll_info)
-                scroll.config(state=DISABLED)
+                scroll.delete("1.0", END)
+                for car in list_car:
+                    scroll.insert((END,f"Car name:{car["name"]}\nCar price:{car["price"))
+                    scroll.config(state=DISABLED)
 
 
             scroll = ScrolledText(econom)
@@ -480,12 +455,6 @@ def start():
                            height=2)
         sing_button.place(x=10, y=600)
 
-    # Sing_up def
-
-    # class login:
-    #     def __init__(self,login,password):
-    #         self.login=login
-    #         self.password=password
 
     def Log_in():
 
@@ -720,10 +689,6 @@ def start():
 
 
 
-
 start()
 
 window.mainloop()
-
-
-
