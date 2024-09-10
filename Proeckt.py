@@ -85,8 +85,11 @@ def start():
 
             # 2
 
-            Price_car=Entry(admin_frame,width=40,font=("Comic Sans MS", 14),bg="#800000",fg="#ff0000")
+            Price_car=Entry(admin_frame,width=40,font=("Comic Sans MS", 14),bg="#800000",fg="white")
             Price_car.place(x=496,y=50)
+
+            delet_entry=Entry(admin_frame,width=40,font=("Comic Sans MS", 14),bg="#800000",fg="white")
+            delet_entry.place(x=200,y=720)
 
             # def
 
@@ -113,7 +116,7 @@ def start():
             scroll_description = ScrolledText(admin_frame)
             scroll_description.insert("1.0", "")
             scroll_description.place(x=60, y=120)
-            scroll_description.config(bg="#999999", width=100, height=35, font=(14), fg="red",
+            scroll_description.config(bg="#999999", width=100, height=32, font=(14), fg="red",
                                        wrap=WORD)
 
             # load_car()
@@ -126,12 +129,6 @@ def start():
 
                 with open("car.txt", "a") as file:
                     file.write(f"{Care_name}:{Price}:{description}")
-
-
-
-
-
-
 
 
             # Label
@@ -150,6 +147,9 @@ def start():
             Price_label = Label(admin_frame, text="Price:", font=("Comic Sans MS", 18), bg="#999999", fg="#ff0000")
             Price_label.place(x=500, y=10)
 
+            # 4
+            delet_label = Label(admin_frame,text="delete car:",width=10,height=2,bg="#999999",fg="#ff0000",font=(6))
+            delet_label.place(x=100,y=710)
 
 
 
@@ -158,7 +158,25 @@ def start():
                 Avto_econom()
 
             back_econom=Button(admin_frame,text="back",width=5,height=2,command=back_eco,bg="#999999",fg="#ff0000")
-            back_econom.place(x=5,y=700)
+            back_econom.place(x=5,y=710)
+
+            # def delete_car():
+            #     with open("car.txt","r+") as file:
+            #         car = file.readlines()
+            #         delet = delet_entry.get()
+            #     with open("car.txt", "w") as file:
+            #         for line in file:
+                        # if line == delet:
+
+
+
+
+
+
+            delet_button=Button(admin_frame,text="delet",width=5,height=2,
+                                command=delete_car,bg="#999999",fg="#ff0000")
+            delet_button.place(x=60,y=710)
+
 
         # def admin
 
