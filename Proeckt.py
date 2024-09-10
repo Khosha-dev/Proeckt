@@ -387,12 +387,10 @@ def start():
 
             # scrol bar for car
 
-            list_car=[]
-
             def load_car_data():
-                with open("car.txt","r") as file:
+                with open("car.txt", "r") as file:
                     content = file.readlines()
-
+                    scroll_info = ""
                     for line in content:
                         line = line.strip()
                         if ':' in line:
@@ -401,25 +399,55 @@ def start():
                                 car_name = parts[0].strip()
                                 car_price = parts[1].strip()
                                 car_description = parts[2].strip()
-                                list_car.append ({"Car name": car_name, "Car price": float(car_price),
-                                                  "Car description": car_description})
-                car_scrol()
-            def car_scrol():
+                                scroll_info += (f"Car name: {car_name}"f"\nCar price: {car_price}"
+                                                f"\nCar description: {car_description} \n\n")
+
                 scroll.config(state=NORMAL)
-                scroll.delete("1.0", END)
-                for car in list_car:
-                    scroll.insert(END,f"Car name:{car["name"]}\nCar price:{car["price"]}"
-                                       f"\nCar description:{car["description]}")
+                scroll.insert("1.0", scroll_info)
                 scroll.config(state=DISABLED)
 
-            def sort_name():
-                sort_cars = sort
+            # list_car=[]
+            #
+            # def load_car_data():
+            #     with open("car.txt","r") as file:
+            #         content = file.readlines()
+            #
+            #         for line in content:
+            #             line = line.strip()
+            #             if ':' in line:
+            #                 parts = line.split(':', 2)
+            #                 if len(parts) == 3:
+            #                     car_name = parts[0].strip()
+            #                     car_price = parts[1].strip()
+            #                     car_description = parts[2].strip()
+            #                     list_car.append ({"Car name": car_name, "Car price": float(car_price),
+            #                                       "Car description": car_description})
+            #     # car_scrol()
+            # # def car_scrol():
+            # #     scroll.config(state=NORMAL)
+            # #     scroll.delete("1.0", END)
+            # #     for car in list_car:
+            # #         scroll.insert(END,f"Car name:{car["name"]}\nCar price:{car["price"]}"
+            # #                                f"\nCar description:{car["description]}")
+            # #     scroll.config(state=DISABLED)
+            #
+            # def sort_name():
+            #     sort_cars = sorted(list_car,)
+            #
+            entry_sort = Entry(econom, bg="#800000",fg="white", width=15, font=("Comic Sans MS", 14))
+            entry_sort.place(x=800,y=50)
+
+            label_price=Label(econom,text="Sort by price",bg="#999999",fg="#800000",font=("Comic Sans MS", 14))
+            label_price.place(x=800,y=10)
+
+            button_sort=Button(econom,bg="#999999",fg="#800000",text="sort",width=6,height=2)
+            button_sort.place(x=800,y=100)
 
 
             scroll = ScrolledText(econom)
             scroll.insert("1.0","")
-            scroll.place(x=70,y=50)
-            scroll.config(bg="#999999",width=100,height=35,font=(14),fg="#800000",state=DISABLED,wrap=WORD)
+            scroll.place(x=10,y=50)
+            scroll.config(bg="#999999",width=85,height=35,font=(14),fg="#800000",state=DISABLED,wrap=WORD)
             load_car_data()
 
 
@@ -433,7 +461,7 @@ def start():
 
             # Button
             admin=Button(econom,text="admin",width=5,height=2,command=admin_password,bg="#999999",fg="#ff0000")
-            admin.place(x=10,y=10)
+            admin.place(x=10,y=5)
 
             def start_frame_back():
                 Start_frame()
