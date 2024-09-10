@@ -460,12 +460,6 @@ def start():
 
 
 
-
-
-
-
-
-
         Avto_button = Button(start_frame, text="Econom avto", command=Avto_econom)
         Avto_button.config(bg="#999999",
                            fg="#ff0000",
