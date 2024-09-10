@@ -88,7 +88,26 @@ def start():
             Price_car=Entry(admin_frame,width=40,font=("Comic Sans MS", 14),bg="#800000",fg="#ff0000")
             Price_car.place(x=496,y=50)
 
+            # def
 
+            # def load_car():
+            #     with open("car.txt","r") as file:
+            #         content = file.readlines()
+            #         name = ""
+            #         prise = ""
+            #         description = ""
+            #         for line in content:
+            #             line = line.strip()
+            #             if ':' in line:
+            #                 parts = line.split(':', 2)
+            #                 if len(parts) == 3:
+            #                     name = parts[0].strip()
+            #                     price = parts[1].strip()
+            #                     description = parts[2].strip()
+            #
+            #
+            #     name_car
+            #     scroll_description.insert("1.0", description)
 
             # 3
             scroll_description = ScrolledText(admin_frame)
@@ -97,6 +116,7 @@ def start():
             scroll_description.config(bg="#999999", width=100, height=35, font=(14), fg="red",
                                        wrap=WORD)
 
+            # load_car()
 
             def save_admin_eco_avto():
                 Care_name = name_car.get()
@@ -137,8 +157,8 @@ def start():
                 save_admin_eco_avto()
                 Avto_econom()
 
-            back_econom=Button(admin_frame,text="back",width=5,height=2,command=back_eco,bg="#999999")
-            back_econom.place(x=5,y=600)
+            back_econom=Button(admin_frame,text="back",width=5,height=2,command=back_eco,bg="#999999",fg="#ff0000")
+            back_econom.place(x=5,y=700)
 
         # def admin
 
@@ -391,8 +411,10 @@ def start():
             scroll = ScrolledText(econom)
             scroll.insert("1.0","")
             scroll.place(x=70,y=50)
-            scroll.config(bg="#999999",width=100,height=38,font=(14),fg="#800000",state=DISABLED,wrap=WORD)
+            scroll.config(bg="#999999",width=100,height=35,font=(14),fg="#800000",state=DISABLED,wrap=WORD)
             load_car_data()
+
+
 
 
 
