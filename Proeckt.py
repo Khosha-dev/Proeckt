@@ -59,7 +59,7 @@ def start():
 
 
         # logo
-        label_logo=Label(start_frame,text="Avto Rent.az\n Лучшие машины в баку")
+        label_logo=Label(start_frame,text="Avto Rent.az\n The best cars in Baku")
         label_logo.config(bg="#999999",fg="#800000",font=("Comic Sans MS", 24))
         label_logo.place(x=270,y=15)
 
@@ -442,8 +442,7 @@ def start():
 
 
             # Label
-            label_car_info=Label(econom,text="Списик Машин доступен на аренду. Для аренды позвоните "
-                                             "по телефону c 2 страницы"
+            label_car_info=Label(econom,text="A list of cars is available for rent. To rent, call from page 2"
                                              ,bg="#999999",fg="#800000",font=("Comic Sans MS", 14))
             label_car_info.place(x=100,y=10)
 
@@ -493,7 +492,6 @@ def start():
             proverka = login + ":" + password + "\n"
             if proverka == user:
                 estno = 1
-                # Sigm_in_frame()
                 Start_frame()
         if estno == 0:
             messagebox.showerror("error", "ne pravilno vveli")
