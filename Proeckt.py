@@ -619,7 +619,7 @@ def start():
         login = log_entry.get()
         password = pas_entry.get()
         mail = mail_entry.get()
-        with open("account.txt", "a") as file:
+        with open("account.txt", "a"):
             with open("account.txt", "r") as file:
                 account = file.readlines()
             estno = 0
