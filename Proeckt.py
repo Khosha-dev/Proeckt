@@ -41,7 +41,7 @@ def start():
 
         # def admin frame and config
 
-        def admin_frame():
+        def Admin_frame():
             admin_frame = Frame(window, width=1020, height=768, bg="#999999")
             admin_frame.place(x=0, y=0)
 
@@ -59,28 +59,8 @@ def start():
             delet_entry = Entry(admin_frame, width=40, font=("Comic Sans MS", 14), bg="#800000", fg="white")
             delet_entry.place(x=200, y=720)
 
-            # def
-
-            # def load_car():
-            #     with open("car.txt","r") as file:
-            #         content = file.readlines()
-            #         name = ""
-            #         prise = ""
-            #         description = ""
-            #         for line in content:
-            #             line = line.strip()
-            #             if ':' in line:
-            #                 parts = line.split(':', 2)
-            #                 if len(parts) == 3:
-            #                     name = parts[0].strip()
-            #                     price = parts[1].strip()
-            #                     description = parts[2].strip()
-            #
-            #
-            #     name_car
-            #     scroll_description.insert("1.0", description)
-
             # 3
+
             scroll_description = ScrolledText(admin_frame)
             scroll_description.insert("1.0", "")
             scroll_description.place(x=60, y=120)
@@ -147,6 +127,78 @@ def start():
                                   command=delete_car, bg="#999999", fg="#ff0000")
             delet_button.place(x=60, y=710)
 
+            def admin_2page():
+                admin_2page_frame = Frame(window, width=1020, height=768, bg="#999999")
+                admin_2page_frame.place(x=0, y=0)
+
+                # Entry
+                # 1
+
+                new_name_car = Entry(admin_2page_frame, width=30, bg="#800000", fg="white", font=("Comic Sans MS", 14))
+                new_name_car.place(x=56, y=50)
+
+                # 2
+
+                new_Price_car = Entry(admin_2page_frame, width=40, font=("Comic Sans MS", 14), bg="#800000", fg="white")
+                new_Price_car.place(x=496, y=50)
+
+                # 3
+
+                new_scroll_description = ScrolledText(admin_2page_frame)
+                new_scroll_description.insert("1.0", "")
+                new_scroll_description.place(x=60, y=120)
+                new_scroll_description.config(bg="#999999", width=100, height=32, font=(14), fg="red",
+                                              wrap=WORD)
+
+                # load_car()
+
+                # Label
+                # 1
+
+                new_name_label = Label(admin_2page_frame, text="New car name:",
+                                       font=("Comic Sans MS", 14), bg="#999999",
+                                       fg="#ff0000")
+                new_name_label.place(x=65, y=14)
+
+                # 2
+
+                new_description_label = Label(admin_2page_frame, font=("Comic Sans MS", 18), bg="#999999",
+                                              fg="#ff0000", text="New car description:")
+                new_description_label.place(x=90, y=80)
+
+                # 3
+                new_Price_label = Label(admin_2page_frame, text="New price:", font=("Comic Sans MS", 18),
+                                        bg="#999999", fg="#ff0000")
+                new_Price_label.place(x=500, y=10)
+
+                def back_1page():
+                    Admin_frame()
+
+
+
+
+                back_1page = Button(admin_2page_frame, text="back", width=5, height=2, command=back_1page,
+                                    bg="#999999",
+                                    fg="#ff0000")
+                back_1page.place(x=5, y=710)
+
+
+
+
+
+            page2_button = Button(admin_frame,text="2 page", width=6, height=2,
+                                  command=admin_2page, bg="#999999", fg="#ff0000")
+            page2_button.place(x=800,y=710)
+
+
+
+
+
+
+
+
+
+
         # def admin
 
         def admin_password():
@@ -154,7 +206,7 @@ def start():
                 global Admin_Pasword
                 admin_pass = pass_adm_entry.get()
                 if admin_pass == Admin_Pasword:
-                    admin_frame()
+                    Admin_frame()
                 elif admin_pass != Admin_Pasword:
                     messagebox.showerror("error", "ne pravilno vveli")
                     Avto_econom()
