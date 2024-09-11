@@ -74,8 +74,13 @@ def start():
                 Price = Price_car.get()
                 description = scroll_description.get("1.0", "end")
 
-                with open("car.txt", "a") as file:
-                    file.write(f"{Care_name}:{Price}:{description}")
+                if Care_name == " " or Price == " " or Price == "" or Care_name == "" \
+                        or description == " " or description == "":
+                    messagebox.showinfo(message="zapolnite vse polya")
+
+                else:
+                    with open("car.txt", "a") as file:
+                        file.write(f"{Care_name}:{Price}:{description}")
 
             # Label
             # 1
@@ -150,7 +155,67 @@ def start():
                 new_scroll_description.config(bg="#999999", width=100, height=32, font=(14), fg="red",
                                               wrap=WORD)
 
-                # load_car()
+                def save_new_data():
+                    car_name = new_name_car.get()
+                    car_price = new_Price_car.get()
+                    car_description = new_scroll_description.get("1.0", "end")
+
+                    if car_name == " " or car_price == " " or car_price == "" or car_name == ""\
+                        or car_description == " " or car_description == "":
+                        messagebox.showinfo(message="zapolnite vse polya")
+
+                    else:
+                        with open("car.txt", "a") as file:
+                            file.write(f"{car_name}:{car_price}:{car_description}\n")
+
+                    messagebox.showinfo("Success", "Car details saved successfully")
+                    Admin_frame()
+
+                save_button = Button(admin_2page_frame, text="Save", width=5, height=2, command=save_new_data,
+                                     bg="#999999", fg="#800000")
+                save_button.place(x=5, y=650)
+
+                car_label = Label(admin_2page_frame,width=9,height=2, bg="#999999",
+                                       fg="#800000", font=("Comic Sans MS", 14),text="redact car:")
+                car_label.place(x=90,y=700)
+
+                car_name_entry = Entry(admin_2page_frame, width=30, bg="#800000",
+                                       fg="white", font=("Comic Sans MS", 14))
+                car_name_entry.place(x=200, y=720)
+
+                def load_car_data():
+                    car_name_to_load = car_name_entry.get().strip()  # Получаем имя машины из поля ввода
+                    with open("car.txt", "r") as file:
+                        cars = file.readlines()
+                        for car in cars:
+                            car_details = car.split(":")
+                            if car_details[0].strip() == car_name_to_load:
+                                new_name_car.delete(0, END)
+                                new_name_car.insert(0, car_details[0].strip())
+
+                                new_Price_car.delete(0, END)
+                                new_Price_car.insert(0, car_details[1].strip())
+
+                                new_scroll_description.delete("1.0", END)
+                                new_scroll_description.insert("1.0", car_details[2].strip())
+
+                                # 12
+
+                                car_name_to_delete = car_name_entry.get().strip()
+                                with open("car.txt", "r") as file:
+                                    cars1 = file.readlines()
+
+                                with open("car.txt", "w") as file:
+                                    for car1 in cars1:
+                                        car_details = car1.split(":")
+                                        if car_details[0] != car_name_to_delete:
+                                            file.write(car1)
+                                break
+
+                load_car_button= Button(admin_2page_frame, text="load car", width=8, height=2, command=load_car_data,
+                                    bg="#999999",
+                                    fg="#ff0000")
+                load_car_button.place(x=580, y=710)
 
                 # Label
                 # 1
@@ -187,13 +252,8 @@ def start():
 
 
             page2_button = Button(admin_frame,text="2 page", width=6, height=2,
-                                  command=admin_2page, bg="#999999", fg="#ff0000")
+                                  command=admin_2page, bg="#999999", fg="#800000")
             page2_button.place(x=800,y=710)
-
-
-
-
-
 
 
 
