@@ -478,11 +478,12 @@ def start():
 
         login = log_entry.get()
         password = pas_entry.get()
+        mail = mail_entry.get()
         with open("account.txt", "r") as file:
             account = file.readlines()
         estno = 0
         for user in account:
-            proverka = login + ":" + password + "\n"
+            proverka = login + ":" + password + ":" + mail + "\n"
             if proverka == user:
                 estno = 1
                 Start_frame()
@@ -623,14 +624,14 @@ def start():
     sign_in_frame = Frame(window, width=1020, height=768, bg="#999999")
     sign_in_frame.place(x=0, y=0)
     si_up = Button(window, text="sing up", bg="#999999", fg="#ff0000", height=2, width=5, command=sing)
-    si_up.place(x=100, y=250)
+    si_up.place(x=100, y=310)
 
     # image
     # 1
     rent_car_image2 = PhotoImage(file=r"image/avto_rent16.png")
     image_rent_label2 = Label(sign_in_frame,image=rent_car_image2)
     image_rent_label2.image = rent_car_image2
-    image_rent_label2.place(x=80, y=200)
+    image_rent_label2.place(x=80, y=250)
     image_rent_label2.config(bg="#999999",fg="#999999")
 
 
@@ -654,6 +655,14 @@ def start():
                      )
     log_entry.place(x=100, y=130)
 
+    mail_entry = Entry(window)
+    mail_entry.config(bg="#800000",
+                     fg="#ff0000",
+                     font=("Comic Sans MS", 14),
+                     width=25
+                     )
+    mail_entry.place(x=100, y=270)
+
     login_label = Label(window, text="Login")
     login_label.config(background="#999999",
                        fg="#ff0000",
@@ -661,8 +670,11 @@ def start():
     login_label.place(x=100, y=95)
 
 
-
-
+    mail_label = Label(window, text="Mail")
+    mail_label.config(background="#999999",
+                       fg="#ff0000",
+                       font=("Comic Sans MS", 14, "italic"))
+    mail_label.place(x=100,y=235)
 
 
     pas_label = Label(window, text="Pasword")
@@ -677,7 +689,7 @@ def start():
 
     log_button = Button(window, text="login", command=Log_in)
     log_button.config(bg="#999999", fg="#ff0000", height=2, width=5)
-    log_button.place(x=150, y=250)
+    log_button.place(x=150, y=310)
 
     def destroy():
         window.destroy()
@@ -685,7 +697,8 @@ def start():
     destroy=Button(window,text="exit program",background="#999999",
                    fg="#ff0000"
                    ,command=destroy,width=11,height=2)
-    destroy.place(x=360,y=250)
+    destroy.place(x=360,y=310)
+
 
 
 #
