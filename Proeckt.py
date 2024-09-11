@@ -619,14 +619,15 @@ def start():
         login = log_entry.get()
         password = pas_entry.get()
         mail = mail_entry.get()
-        with open("account.txt", "r") as file:
-            account = file.readlines()
-        estno = 0
-        for user in account:
-            proverka = login + ":" + password + ":" + mail + "\n"
-            if proverka == user:
-                estno = 1
-                Start_frame()
+        with open("account.txt", "a") as file:
+            with open("account.txt", "r") as file:
+                account = file.readlines()
+            estno = 0
+            for user in account:
+                proverka = login + ":" + password + ":" + mail + "\n"
+                if proverka == user:
+                    estno = 1
+                    Start_frame()
         if estno == 0:
             messagebox.showerror("error", "ne pravilno vveli")
 
