@@ -1,16 +1,14 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter.scrolledtext import ScrolledText
-
+from tkinter import ttk
 
 window = Tk()
 window.title("Rent Avto")
 window.geometry("1028x768+790+250")
-window.resizable(width=False,height=False)
+window.resizable(width=False, height=False)
 
-
-
-Admin_Pasword="Admin"
+Admin_Pasword = "Admin"
 sort_mode = "name"
 
 
@@ -21,45 +19,45 @@ def start():
         start_frame.place(x=0, y=0)
         # image
         # 1
-        rent_car_image=PhotoImage(file=r"image/avto_rent7.png")
-        image_rent_label=Label(image=rent_car_image)
+        rent_car_image = PhotoImage(file=r"image/avto_rent7.png")
+        image_rent_label = Label(image=rent_car_image)
         image_rent_label.image = rent_car_image
-        image_rent_label.place(x=150,y=200)
+        image_rent_label.place(x=150, y=200)
         image_rent_label.config(bg="#999999")
 
-
         # logo
-        label_logo=Label(start_frame,text="Avto Rent.az\n The best cars in Baku")
-        label_logo.config(bg="#999999",fg="#800000",font=("Comic Sans MS", 24))
-        label_logo.place(x=270,y=15)
+        label_logo = Label(start_frame, text="Avto Rent.az\n The best cars in Baku")
+        label_logo.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 24))
+        label_logo.place(x=270, y=15)
 
         def exit():
             start()
-        exit=Button(start_frame,text="exit",bg="#999999",
-                               fg="#ff0000",
-                               width=5,
-                               height=2,command=exit)
-        exit.place(x=60,y=600)
+
+        exit = Button(start_frame, text="exit", bg="#999999",
+                      fg="#ff0000",
+                      width=5,
+                      height=2, command=exit)
+        exit.place(x=60, y=600)
 
         # def admin frame and config
 
         def admin_frame():
-            admin_frame=Frame(window,width=1020, height=768,bg="#999999")
-            admin_frame.place(x=0,y=0)
+            admin_frame = Frame(window, width=1020, height=768, bg="#999999")
+            admin_frame.place(x=0, y=0)
 
             # Entry
             # 1
 
-            name_car=Entry(admin_frame,width=30,bg="#800000",fg="white",font=("Comic Sans MS", 14))
-            name_car.place(x=56,y=50)
+            name_car = Entry(admin_frame, width=30, bg="#800000", fg="white", font=("Comic Sans MS", 14))
+            name_car.place(x=56, y=50)
 
             # 2
 
-            Price_car=Entry(admin_frame,width=40,font=("Comic Sans MS", 14),bg="#800000",fg="white")
-            Price_car.place(x=496,y=50)
+            Price_car = Entry(admin_frame, width=40, font=("Comic Sans MS", 14), bg="#800000", fg="white")
+            Price_car.place(x=496, y=50)
 
-            delet_entry=Entry(admin_frame,width=40,font=("Comic Sans MS", 14),bg="#800000",fg="white")
-            delet_entry.place(x=200,y=720)
+            delet_entry = Entry(admin_frame, width=40, font=("Comic Sans MS", 14), bg="#800000", fg="white")
+            delet_entry.place(x=200, y=720)
 
             # def
 
@@ -87,7 +85,7 @@ def start():
             scroll_description.insert("1.0", "")
             scroll_description.place(x=60, y=120)
             scroll_description.config(bg="#999999", width=100, height=32, font=(14), fg="red",
-                                       wrap=WORD)
+                                      wrap=WORD)
 
             # load_car()
 
@@ -96,45 +94,41 @@ def start():
                 Price = Price_car.get()
                 description = scroll_description.get("1.0", "end")
 
-
                 with open("car.txt", "a") as file:
                     file.write(f"{Care_name}:{Price}:{description}")
-
 
             # Label
             # 1
 
-            name_label=Label(admin_frame,text="Car name:",font=("Comic Sans MS", 14),bg="#999999",fg="#ff0000")
-            name_label.place(x=65,y=14)
+            name_label = Label(admin_frame, text="Car name:", font=("Comic Sans MS", 14), bg="#999999", fg="#ff0000")
+            name_label.place(x=65, y=14)
 
             # 2
 
-            description_label=Label(admin_frame,font=("Comic Sans MS", 18),bg="#999999",
-                                    fg="#ff0000",text="Car description:")
-            description_label.place(x=90,y=80)
+            description_label = Label(admin_frame, font=("Comic Sans MS", 18), bg="#999999",
+                                      fg="#ff0000", text="Car description:")
+            description_label.place(x=90, y=80)
 
             # 3
             Price_label = Label(admin_frame, text="Price:", font=("Comic Sans MS", 18), bg="#999999", fg="#ff0000")
             Price_label.place(x=500, y=10)
 
             # 4
-            delet_label = Label(admin_frame,text="delete car:",width=10,height=2,bg="#999999",fg="#ff0000",font=(6))
-            delet_label.place(x=100,y=710)
-
-
+            delet_label = Label(admin_frame, text="delete car:", width=10, height=2, bg="#999999", fg="#ff0000",
+                                font=(6))
+            delet_label.place(x=100, y=710)
 
             def back_eco():
 
                 Avto_econom()
 
+            save_car = Button(admin_frame, text="save", width=5, height=2,
+                              command=save_admin_eco_avto, bg="#999999", fg="#ff0000")
+            save_car.place(x=5, y=660)
 
-            save_car=Button(admin_frame,text="save",width=5,height=2,
-                            command=save_admin_eco_avto,bg="#999999",fg="#ff0000")
-            save_car.place(x=5,y=660)
-
-
-            back_econom=Button(admin_frame,text="back",width=5,height=2,command=back_eco,bg="#999999",fg="#ff0000")
-            back_econom.place(x=5,y=710)
+            back_econom = Button(admin_frame, text="back", width=5, height=2, command=back_eco, bg="#999999",
+                                 fg="#ff0000")
+            back_econom.place(x=5, y=710)
 
             def delete_car():
                 car_name_to_delete = delet_entry.get().strip()
@@ -149,54 +143,48 @@ def start():
 
                 messagebox.showinfo("Успех", f"Машина '{car_name_to_delete}' успешно удалена")
 
-
-
-
-
-
-            delet_button=Button(admin_frame,text="delet",width=5,height=2,
-                                command=delete_car,bg="#999999",fg="#ff0000")
-            delet_button.place(x=60,y=710)
-
+            delet_button = Button(admin_frame, text="delet", width=5, height=2,
+                                  command=delete_car, bg="#999999", fg="#ff0000")
+            delet_button.place(x=60, y=710)
 
         # def admin
 
         def admin_password():
             def admin_pas():
                 global Admin_Pasword
-                admin_pass= pass_adm.get()
+                admin_pass = pass_adm_entry.get()
                 if admin_pass == Admin_Pasword:
                     admin_frame()
-                elif admin_pass !=Admin_Pasword:
+                elif admin_pass != Admin_Pasword:
                     messagebox.showerror("error", "ne pravilno vveli")
                     Avto_econom()
 
             # frame
-            admin_reg=Frame(window,width=1020,height=768,bg="#999999")
-            admin_reg.place(x=0,y=0)
+            admin_reg = Frame(window, width=1020, height=768, bg="#999999")
+            admin_reg.place(x=0, y=0)
 
             # def
             def back_eco():
                 Avto_econom()
 
             # Entry
-            pass_adm=Entry(admin_reg,bg="#800000",width=25,font=("Comic Sans MS", 14),)
-            pass_adm.place(x=250,y=200)
+            pass_adm_entry = Entry(admin_reg, bg="#800000", width=25, font=("Comic Sans MS", 14), )
+            pass_adm_entry.place(x=250, y=200)
 
             # Button(да,я решил их подписать и распределить. ну правда же я молодец. *>* )
             # 1
-            back_eco=Button(admin_reg,text='back',width=5,height=2,bg="#999999",fg="#800000",command=back_eco)
-            back_eco.place(x=10,y=650)
+            back_eco_button = Button(admin_reg, text='back', width=5, height=2, bg="#999999", fg="#800000",
+                                     command=back_eco)
+            back_eco_button.place(x=10, y=650)
             # 2
-            enter=Button(admin_reg,text='enter',width=5,height=2,fg="#800000",bg="#999999",command=admin_pas)
-            enter.place(x=350,y=250)
+            enter_button = Button(admin_reg, text='enter', width=5, height=2, fg="#800000", bg="#999999",
+                                  command=admin_pas)
+            enter_button.place(x=350, y=250)
 
             # label
-            label_pass=Label(admin_reg,text="password:")
-            label_pass.config(bg="#999999",fg="#800000",font=("Comic Sans MS", 14))
-            label_pass.place(x=150,y=195)
-
-
+            pass_label = Label(admin_reg, text="password:")
+            pass_label.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 14))
+            pass_label.place(x=150, y=195)
 
         # control
         def back():
@@ -209,12 +197,13 @@ def start():
             info_frame = Frame(window, width=1020, height=768, bg="#999999")
             info_frame.place(x=0, y=0)
 
-            sing_button = Button(info_frame, text="back", command=back)  # command=Sing_in)
+            sing_button = Button(info_frame, text="back", command=back)
             sing_button.config(bg="#999999",
                                fg="#ff0000",
                                width=5,
                                height=2)
             sing_button.place(x=10, y=600)
+
             # def
             def Info_redact():
                 info_redact = Frame(window, width=1020, height=768, bg="#999999")
@@ -226,25 +215,23 @@ def start():
 
                 # label
                 # 1
-                label_insta=Label(info_redact,text="instagram:",font=("Comic Sans MS", 14),bg="#999999")
-                label_insta.place(x=10,y=6)
+                insta_label = Label(info_redact, text="instagram:", font=("Comic Sans MS", 14), bg="#999999")
+                insta_label.place(x=10, y=6)
 
                 # 2
-                label_instaga = Label(info_redact, text="Telegram:", font=("Comic Sans MS", 14), bg="#999999")
-                label_instaga.place(x=10, y=58)
+                instaga_label = Label(info_redact, text="Telegram:", font=("Comic Sans MS", 14), bg="#999999")
+                instaga_label.place(x=10, y=58)
 
                 # 3
 
-                telefon_label=Label(info_redact, text="Telefon:", font=("Comic Sans MS", 14), bg="#999999")
-                telefon_label.place(x=25,y=105)
-
-
+                telefon_label = Label(info_redact, text="Telefon:", font=("Comic Sans MS", 14), bg="#999999")
+                telefon_label.place(x=25, y=105)
 
                 # Entry
                 # 1
 
-                instagram_entry=Entry(info_redact,bg="#800000", width=25, font=("Comic Sans MS", 14))
-                instagram_entry.place(x=110,y=10)
+                instagram_entry = Entry(info_redact, bg="#800000", width=25, font=("Comic Sans MS", 14))
+                instagram_entry.place(x=110, y=10)
 
                 # 2
 
@@ -254,7 +241,7 @@ def start():
                 # 3
 
                 telefon_entry = Entry(info_redact, bg="#800000", width=25, font=("Comic Sans MS", 14))
-                telefon_entry.place(x=110,y=110)
+                telefon_entry.place(x=110, y=110)
 
                 # save
                 def save_info():
@@ -262,114 +249,94 @@ def start():
                     telegram = telegram_entry.get()
                     telefon = telefon_entry.get()
                     # info=({"insta":instagram,"telega":telegram,"telefon":telefon})
-                    info_list=[instagram,telegram,telefon]
-                    with open("info.txt","w") as file:
+                    info_list = [instagram, telegram, telefon]
+                    with open("info.txt", "w") as file:
                         for info in info_list:
                             file.write(f"{info}\n")
                         # file.write(f"{instagram}\n")
                         # file.write(f"{telegram}\n")
                         # file.write(f"{telefon}\n")
 
-
-
-
                 # Button
                 # 1
-                back3=Button(info_redact,bg="#999999",text="Back",width=5,height=2,command=back_info)
-                back3.place(x=10,y=720)
+                back3_button = Button(info_redact, bg="#999999", text="Back", width=5, height=2, command=back_info)
+                back3_button.place(x=10, y=720)
 
                 # 2
-                info_save=Button(info_redact,bg="#999999",text="save",width=5,height=2,command=save_info)
-                info_save.place(x=60,y=720)
-
-
+                info_save_button = Button(info_redact, bg="#999999", text="save", width=5, height=2, command=save_info)
+                info_save_button.place(x=60, y=720)
 
             def info_admin_pass():
-                info_admin = Frame(window, width=1020, height=768, bg="#999999")
-                info_admin.place(x=0, y=0)
-
+                info_admin_frame = Frame(window, width=1020, height=768, bg="#999999")
+                info_admin_frame.place(x=0, y=0)
 
                 # def
                 def check():
                     global Admin_Pasword
-                    password=pass_adm.get()
+                    password = pass_adm_entry.get()
                     if password == Admin_Pasword:
                         Info_redact()
 
-
-
                 # Entry
-                pass_adm = Entry(info_admin, bg="#800000", width=25, font=("Comic Sans MS", 14), )
-                pass_adm.place(x=250, y=200)
+                pass_adm_entry = Entry(info_admin_frame, bg="#800000", width=25, font=("Comic Sans MS", 14), )
+                pass_adm_entry.place(x=250, y=200)
 
                 # *>*
 
                 # 1
 
-                back_eco = Button(info_admin, text='back', width=5, height=2, bg="#999999", fg="#800000",
-                                  command=next)
-                back_eco.place(x=10, y=650)
+                back_eco_button = Button(info_admin_frame, text='back', width=5, height=2, bg="#999999", fg="#800000",
+                                         command=next)
+                back_eco_button.place(x=10, y=650)
 
                 # 2
 
-                enter = Button(info_admin, text='enter', width=5, height=2, fg="#800000", bg="#999999",
-                               command=check)
-                enter.place(x=350, y=250)
-
-
+                enter_button = Button(info_admin_frame, text='enter', width=5, height=2, fg="#800000", bg="#999999",
+                                      command=check)
+                enter_button.place(x=350, y=250)
 
                 # label
-                label_pass = Label(info_admin, text="password:")
-                label_pass.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 14))
-                label_pass.place(x=150, y=195)
+                pass_label = Label(info_admin_frame, text="password:")
+                pass_label.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 14))
+                pass_label.place(x=150, y=195)
 
+            # Button
 
-            #Button
-
-            info_admin=Button(info_frame,text="redact",bg="#999999",fg="#800000",width=6,height=2,
-                              command=info_admin_pass)
-            info_admin.place(x=800,y=10)
-
+            info_admin_button = Button(info_frame, text="redact", bg="#999999", fg="#800000", width=6, height=2,
+                                       command=info_admin_pass)
+            info_admin_button.place(x=800, y=10)
 
             # peremenn
 
-            with open("info.txt","r") as file:
+            with open("info.txt", "r") as file:
                 lines = file.readlines()
-
-
 
             if len(lines) >= 3:
                 instagram = lines[0]
                 telegram = lines[1]
                 telefon = lines[2]
             else:
-                instagram=""
-                telegram=""
-                telefon=""
-
-
+                instagram = ""
+                telegram = ""
+                telefon = ""
 
             # label
             # 1
-            label_instagram=Label(info_frame,text=f"Instagram:\n{instagram}")
-            label_instagram.config(bg="#999999",fg="#800000",font=("Comic Sans MS", 28),width=20)
-            label_instagram.place(x=250,y=100)
+            label_instagram = Label(info_frame, text=f"Instagram:\n{instagram}")
+            label_instagram.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28), width=20)
+            label_instagram.place(x=250, y=100)
             # 2 text label
             label_telegram = Label(info_frame, text=f"Telegram:\n{telegram}")
-            label_telegram.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28),width=20)
+            label_telegram.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28), width=20)
             label_telegram.place(x=250, y=230)
             # 3
             label_telefon = Label(info_frame, text=f"Telefon:\n{telefon}")
-            label_telefon.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28),width=20)
+            label_telefon.config(bg="#999999", fg="#800000", font=("Comic Sans MS", 28), width=20)
             label_telefon.place(x=250, y=360)
 
-
-
-
-
         def Avto_econom():
-            econom=Frame(window,width=1020,height=768,bg="#999999")
-            econom.place(x=0,y=0)
+            econom = Frame(window, width=1020, height=768, bg="#999999")
+            econom.place(x=0, y=0)
 
             # scrol bar for car
 
@@ -389,71 +356,133 @@ def start():
                                                 f"\nCar description: {car_description} \n\n")
 
                 scroll.config(state=NORMAL)
+                scroll.delete("1.0", END)
                 scroll.insert("1.0", scroll_info)
                 scroll.config(state=DISABLED)
 
-            # list_car=[]
-            #
-            # def load_car_data():
-            #     with open("car.txt","r") as file:
-            #         content = file.readlines()
-            #
-            #         for line in content:
-            #             line = line.strip()
-            #             if ':' in line:
-            #                 parts = line.split(':', 2)
-            #                 if len(parts) == 3:
-            #                     car_name = parts[0].strip()
-            #                     car_price = parts[1].strip()
-            #                     car_description = parts[2].strip()
-            #                     list_car.append ({"Car name": car_name, "Car price": float(car_price),
-            #                                       "Car description": car_description})
-            #     # car_scrol()
-            # # def car_scrol():
-            # #     scroll.config(state=NORMAL)
-            # #     scroll.delete("1.0", END)
-            # #     for car in list_car:
-            # #         scroll.insert(END,f"Car name:{car["name"]}\nCar price:{car["price"]}"
-            # #                                f"\nCar description:{car["description]}")
-            # #     scroll.config(state=DISABLED)
-            #
-            # def sort_name():
-            #     sort_cars = sorted(list_car,)
-            #
-            entry_sort = Entry(econom, bg="#800000",fg="white", width=15, font=("Comic Sans MS", 14))
-            entry_sort.place(x=800,y=50)
 
-            label_price=Label(econom,text="Sort by price",bg="#999999",fg="#800000",font=("Comic Sans MS", 14))
-            label_price.place(x=800,y=10)
 
-            button_sort=Button(econom,bg="#999999",fg="#800000",text="sort",width=6,height=2)
-            button_sort.place(x=800,y=100)
+            # sort
 
+            # Функция сортировки по цене
+            def sort():
+                try:
+                    price = sort_entry.get()
+                    if price == "prise":
+                         load_car_data()
+                    else:
+                        price = int(price)
+                        scroll_info = ""
+
+                        with open("car.txt", "r") as file:
+                            car_data = file.readlines()
+
+                            for line in car_data:
+                                line = line.strip()
+                                if ':' in line:
+                                    parts = line.split(':', 2)
+                                    if len(parts) == 3:
+                                        car_name = parts[0].strip()
+                                        car_price = int(parts[1].strip())
+                                        car_description = parts[2].strip()
+
+                                        if car_price <= price:
+                                            scroll_info += (f"Car name: {car_name}"
+                                                            f"\nCar price: {car_price}"
+                                                            f"\nCar description: {car_description} \n\n")
+
+
+                        scroll.config(state=NORMAL)
+                        scroll.delete("1.0", END)
+                        scroll.insert("1.0", scroll_info)
+                        scroll.config(state=DISABLED)
+
+                except ValueError:
+                    pass
+
+            def found_car():
+                found = found_entry.get().strip().lower()
+                if found == "":
+                    return load_car_data()
+
+                scroll_info = ""
+
+                with open("car.txt", "r") as file:
+                    car_data = file.readlines()
+
+                    for line in car_data:
+                        line = line.strip()
+                        if ':' in line:
+                            parts = line.split(':', 2)
+                            if len(parts) == 3:
+                                car_name = parts[0].strip()
+                                car_price = parts[1].strip()
+                                car_description = parts[2].strip()
+
+
+                                if found in car_name.lower():
+                                    scroll_info += (f"Car name: {car_name}"
+                                                    f"\nCar price: {car_price}"
+                                                    f"\nCar description: {car_description} \n\n")
+
+
+                scroll.config(state=NORMAL)
+                scroll.delete("1.0", END)
+                scroll.insert("1.0",
+                scroll_info if scroll_info else "Car not found.")
+                scroll.config(state=DISABLED)
+
+
+
+
+
+            price_label = Label(econom, text="Sort by price", bg="#999999", fg="#800000", font=("Comic Sans MS", 14))
+            price_label.place(x=800, y=10)
+
+            sort_button = Button(econom, bg="#999999", fg="#800000", text="sort", width=6, height=2,command=sort)
+            sort_button.place(x=800, y=100)
+
+            price_list=["prise",100,200,500,1000,10000,100000,1000000]
+
+            sort_entry = ttk.Combobox(econom,values=price_list, width=13, font=("Comic Sans MS", 14), )
+            sort_entry.place(x=800, y=50)
+            sort_entry.current(0)
+
+            # found
+
+            found_entry = Entry(econom, bg="#800000", fg="white", width=15, font=("Comic Sans MS", 14))
+            found_entry.place(x=800, y=190)
+
+            car_found_label = Label(econom, text="Found car by name", bg="#999999", fg="#800000",
+                                    font=("Comic Sans MS", 14))
+            car_found_label.place(x=800, y=150)
+
+            found_button = Button(econom, bg="#999999", fg="#800000", text="found", width=6, height=2,command=found_car)
+            found_button.place(x=800, y=240)
+
+            # scroll
 
             scroll = ScrolledText(econom)
-            scroll.insert("1.0","")
-            scroll.place(x=10,y=50)
-            scroll.config(bg="#999999",width=85,height=35,font=(14),fg="#800000",state=DISABLED,wrap=WORD)
+            scroll.insert("1.0", "")
+            scroll.place(x=10, y=50)
+            scroll.config(bg="#999999", width=85, height=35, font=(14), fg="#800000", state=DISABLED, wrap=WORD)
             load_car_data()
 
-
-
-
-
             # Label
-            label_car_info=Label(econom,text="A list of cars is available for rent. To rent, call from page 2"
-                                             ,bg="#999999",fg="#800000",font=("Comic Sans MS", 14))
-            label_car_info.place(x=100,y=10)
+            car_info_label = Label(econom, text="A list of cars is available for rent. To rent, call from page 2"
+                                   , bg="#999999", fg="#800000", font=("Comic Sans MS", 14))
+            car_info_label.place(x=100, y=10)
 
             # Button
-            admin=Button(econom,text="admin",width=5,height=2,command=admin_password,bg="#999999",fg="#ff0000")
-            admin.place(x=10,y=5)
+            admin_button = Button(econom, text="admin", width=5, height=2, command=admin_password, bg="#999999",
+                                  fg="#ff0000")
+            admin_button.place(x=10, y=5)
 
             def start_frame_back():
                 Start_frame()
 
-            back_start_frame= Button(econom, text="back", width=5, height=2, command=start_frame_back,
-                                     bg="#999999", fg="#ff0000")
+            back_start_frame = Button(econom, text="back", width=5, height=2, command=start_frame_back,
+                                      bg="#999999", fg="#ff0000")
             back_start_frame.place(x=10, y=700)
 
 
@@ -472,7 +501,6 @@ def start():
                            width=5,
                            height=2)
         sing_button.place(x=10, y=600)
-
 
     def Log_in():
 
@@ -494,12 +522,11 @@ def start():
 
         def Sing_up():
 
-
             login = log1_entry.get()
             password = pas1_entry.get()
-            rep_password=second_pas.get()
+            rep_password = second_pas.get()
             mail = mail_entry.get()
-            if login == " " or password == " " or login == "" or password == "" or mail == " " or mail == ""\
+            if login == " " or password == " " or login == "" or password == "" or mail == " " or mail == "" \
                     or rep_password == "" or rep_password == " ":
                 messagebox.showinfo(message="zapolnite vse polya")
                 sing()
@@ -513,8 +540,6 @@ def start():
                         file.write(f"{login}:{password}:{mail}\n")
                     messagebox.showinfo(message="reqistraciya uspeshna")
                     start()
-
-
 
         # sing def
         s_up = Frame(window, width=1020, height=768, bg="#999999")
@@ -539,8 +564,8 @@ def start():
 
         log_label = Label(s_up, text="Avto")
         log_label.config(background="#999999",
-                            fg="white",
-                            font=("Comic Sans MS", 28, "italic"))
+                         fg="white",
+                         font=("Comic Sans MS", 28, "italic"))
         log_label.place(x=100, y=10)
 
         login1_label = Label(s_up, text="Login")
@@ -562,35 +587,33 @@ def start():
         mail_label.place(x=100, y=222)
 
         repear_password = Label(s_up, text="Repear password")
-        repear_password.config(bg="#999999",fg="#ff0000",font=("Comic Sans MS", 14, "italic"))
-        repear_password.place(x=100,y=270)
+        repear_password.config(bg="#999999", fg="#ff0000", font=("Comic Sans MS", 14, "italic"))
+        repear_password.place(x=100, y=270)
 
-        second_pas=Entry(s_up)
+        second_pas = Entry(s_up)
         second_pas.config(bg="#800000",
                           fg="#ff0000",
                           font=("Comic Sans MS", 14),
                           width=25,
                           show="*"
                           )
-        second_pas.place(x=100,y=300)
+        second_pas.place(x=100, y=300)
 
         show_var = IntVar()
 
         def show():
             if show_var.get():
-                pas1_entry.config(show = "")
-                second_pas.config(show = "")
+                pas1_entry.config(show="")
+                second_pas.config(show="")
             else:
-                pas1_entry.config(show = "*")
-                second_pas.config(show = "*")
+                pas1_entry.config(show="*")
+                second_pas.config(show="*")
 
-
-
-        check_button = Checkbutton(s_up,text="Show password",command=show,bg="#999999",
-                          fg="#ff0000",
-                          font=("Comic Sans MS", 14),
-                          width=12,variable=show_var)
-        check_button.place(x=450,y=200)
+        check_button = Checkbutton(s_up, text="Show password", command=show, bg="#999999",
+                                   fg="#ff0000",
+                                   font=("Comic Sans MS", 14),
+                                   width=12, variable=show_var)
+        check_button.place(x=450, y=200)
 
         pas1_entry = Entry(s_up)
         pas1_entry.config(bg="#800000",
@@ -609,16 +632,13 @@ def start():
                           )
         log1_entry.place(x=100, y=150)
 
-        mail_entry=Entry(s_up)
+        mail_entry = Entry(s_up)
         mail_entry.config(bg="#800000",
                           fg="#ff0000",
                           font=("Comic Sans MS", 14),
                           width=25
                           )
-        mail_entry.place(x=100,y=250)
-
-
-
+        mail_entry.place(x=100, y=250)
 
     # start def
     sign_in_frame = Frame(window, width=1020, height=768, bg="#999999")
@@ -629,14 +649,10 @@ def start():
     # image
     # 1
     rent_car_image2 = PhotoImage(file=r"image/avto_rent16.png")
-    image_rent_label2 = Label(sign_in_frame,image=rent_car_image2)
+    image_rent_label2 = Label(sign_in_frame, image=rent_car_image2)
     image_rent_label2.image = rent_car_image2
     image_rent_label2.place(x=80, y=250)
-    image_rent_label2.config(bg="#999999",fg="#999999")
-
-
-
-
+    image_rent_label2.config(bg="#999999", fg="#999999")
 
     pas_entry = Entry(window)
     pas_entry.config(bg="#800000",
@@ -657,10 +673,10 @@ def start():
 
     mail_entry = Entry(window)
     mail_entry.config(bg="#800000",
-                     fg="#ff0000",
-                     font=("Comic Sans MS", 14),
-                     width=25
-                     )
+                      fg="#ff0000",
+                      font=("Comic Sans MS", 14),
+                      width=25
+                      )
     mail_entry.place(x=100, y=270)
 
     login_label = Label(window, text="Login")
@@ -669,23 +685,17 @@ def start():
                        font=("Comic Sans MS", 14, "italic"))
     login_label.place(x=100, y=95)
 
-
     mail_label = Label(window, text="Mail")
     mail_label.config(background="#999999",
-                       fg="#ff0000",
-                       font=("Comic Sans MS", 14, "italic"))
-    mail_label.place(x=100,y=235)
-
+                      fg="#ff0000",
+                      font=("Comic Sans MS", 14, "italic"))
+    mail_label.place(x=100, y=235)
 
     pas_label = Label(window, text="Pasword")
     pas_label.config(background="#999999",
                      fg="#ff0000",
                      font=("Comic Sans MS", 14, "italic"))
     pas_label.place(x=100, y=165)
-
-
-
-
 
     log_button = Button(window, text="login", command=Log_in)
     log_button.config(bg="#999999", fg="#ff0000", height=2, width=5)
@@ -694,11 +704,10 @@ def start():
     def destroy():
         window.destroy()
 
-    destroy=Button(window,text="exit program",background="#999999",
-                   fg="#ff0000"
-                   ,command=destroy,width=11,height=2)
-    destroy.place(x=360,y=310)
-
+    destroy = Button(window, text="exit program", background="#999999",
+                     fg="#ff0000"
+                     , command=destroy, width=11, height=2)
+    destroy.place(x=360, y=310)
 
 
 #

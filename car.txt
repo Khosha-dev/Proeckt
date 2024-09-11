@@ -1,2 +1,5 @@
-LADA Niva Travel:879 900 or 1 045 900 rub:120km/h
+LADA Niva Travel:879900:120km/h
 1:1:1
+ASddsfg:1235:4133
+waf:23112:asfaw
+wa2sfaf:2333312:asfawdfas
